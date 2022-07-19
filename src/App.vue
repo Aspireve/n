@@ -77,7 +77,7 @@ addNote();
             </v-list-item>
             <v-list-item
               class="mt-auto"
-              href="https://github.com/AsaiToshiya/n"
+              href="https://github.com/AsaiToshiya/n" target="_blank"
             >
               <v-list-item-icon icon="mdi-github" />
             </v-list-item>
