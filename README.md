@@ -4,9 +4,10 @@ N は、極端にシンプルなメモ帳です。
 
 https://AsaiToshiya.github.io/n
 
-## ライセンス
 ![N Notepad](https://user-images.githubusercontent.com/67789502/179772612-004d4c81-78b5-4fbe-8cfd-5b68407d0386.PNG)
 
+
+## ライセンス
 
     MIT License
 
