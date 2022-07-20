@@ -1,17 +1,10 @@
 <script setup>
-import { ref, computed, nextTick } from "vue";
+import { ref, computed, watch, nextTick } from "vue";
 
 // 定数
 
 const KEY_NOTES = "notes";
 const MAX_NOTE_COUNT = 100;
-
-// プライベート メソッド
-
-const _focusOnTextArea = async () => {
-  await nextTick();
-  textarea.value.focus();
-};
 
 // リアクティブ変数
 
@@ -26,7 +19,6 @@ const text = computed({
   get() {
     const id = selected.value[0];
     const note = notes.value.find((x) => x.id === id);
-    _focusOnTextArea();
     return note.text;
   },
   set(newValue) {
@@ -42,6 +34,13 @@ const text = computed({
   },
 });
 
+// ウォッチャー
+
+watch([isListShow, selected], async () => {
+  await nextTick();
+  textarea.value.focus();
+});
+
 // メソッド ハンドラー
 
 const addNote = () => {
@@ -49,13 +48,9 @@ const addNote = () => {
   const newNote = { id, text: "" };
   notes.value = [newNote, ...notes.value].slice(0, MAX_NOTE_COUNT);
   selected.value = [id];
-  _focusOnTextArea();
 };
 
-const toggleList = () => {
-  isListShow.value = !isListShow.value;
-  _focusOnTextArea();
-};
+const toggleList = () => (isListShow.value = !isListShow.value);
 
 // ライフサイクル フック
 
