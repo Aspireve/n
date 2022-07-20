@@ -4,7 +4,7 @@
 
 N is an extremely simple notepad.
 
-Typed note is automatically saved, and the oldest note will be deleted when the number exceeds 100.
+Typed note is automatically saved in the browser's localStorage, and the oldest note will be deleted when the number exceeds 100.
 
 https://AsaiToshiya.github.io/n
 
