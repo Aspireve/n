@@ -9,7 +9,13 @@ const MAX_NOTE_COUNT = 100;
 // リアクティブ変数
 
 const isListShow = ref(false);
-const notes = ref(JSON.parse(localStorage.getItem(KEY_NOTES)) || []);
+const notes = ref(
+  (JSON.parse(localStorage.getItem(KEY_NOTES)) || []).map(({ id, text }) => ({
+    id,
+    text,
+    noteName: text.trim() ? text : "Empty",
+  }))
+);
 const selected = ref([]);
 const textarea = ref(null);
 
