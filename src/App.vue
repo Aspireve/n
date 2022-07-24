@@ -36,7 +36,15 @@ const text = computed({
       ...notes.value.slice(0, index),
       ...notes.value.slice(index + 1),
     ];
-    localStorage.setItem(KEY_NOTES, JSON.stringify(notes.value));
+    localStorage.setItem(
+      KEY_NOTES,
+      JSON.stringify(
+        notes.value.map(({ id, text }) => ({
+          id,
+          text,
+        }))
+      )
+    );
   },
 });
 
