@@ -30,7 +30,11 @@ const text = computed({
   set(newValue) {
     const id = selected.value[0];
     const index = notes.value.findIndex((x) => x.id === id);
-    const newNote = { id, text: newValue, noteName: newValue.trim() ? newValue : "Empty" };
+    const newNote = {
+      id,
+      text: newValue,
+      noteName: newValue.trim() ? newValue : "Empty",
+    };
     notes.value = [
       newNote,
       ...notes.value.slice(0, index),
@@ -59,7 +63,7 @@ watch([isListShow, selected], async () => {
 
 const addNote = () => {
   const id = Math.random().toString(36).slice(2);
-  const newNote = { id, text: "", noteName: "Empty"};
+  const newNote = { id, text: "", noteName: "Empty" };
   notes.value = [newNote, ...notes.value].slice(0, MAX_NOTE_COUNT);
   selected.value = [id];
 };
@@ -86,7 +90,8 @@ addNote();
             </v-list-item>
             <v-list-item
               class="mt-auto"
-              href="https://github.com/AsaiToshiya/n" target="_blank"
+              href="https://github.com/AsaiToshiya/n"
+              target="_blank"
             >
               <v-list-item-icon icon="mdi-github" />
             </v-list-item>
