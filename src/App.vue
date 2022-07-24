@@ -91,7 +91,7 @@ addNote();
           <v-list
             v-model:selected="selected"
             :items="notes"
-            class="d-flex flex-column list"
+            class="d-flex flex-column list h-screen"
             density="compact"
             item-title="noteName"
             item-value="id"
