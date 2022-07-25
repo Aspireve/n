@@ -32,7 +32,11 @@ function App() {
   const handleChange = (event) => {
     const id = selected[0];
     const index = notes.findIndex((x) => x.id === id);
-    const newNote = { id, text: event.target.value };
+    const newNote = {
+      id,
+      text: event.target.value,
+      noteName: event.target.value.trim() ? event.target.value : "Empty",
+    };
     const newNotes = [
       newNote,
       ...notes.slice(0, index),
@@ -50,7 +54,7 @@ function App() {
 
   const addNote = () => {
     const id = Math.random().toString(36).slice(2);
-    const newNote = { id, text: "" };
+    const newNote = { id, text: "", noteName: "Empty" };
     setNotes([newNote, ...notes].slice(0, MAX_NOTE_COUNT));
     setSelected([id]);
   };
@@ -137,7 +141,7 @@ function App() {
       {isListShow && (
         <Menu
           className="d-flex flex-column list"
-          items={notes.map((note) => ({ label: note.text, key: note.id }))}
+          items={notes.map((note) => ({ label: note.noteName, key: note.id }))}
           mode="inline"
           onSelect={({ key }) => setSelected([key])}
           selectedKeys={selected}
