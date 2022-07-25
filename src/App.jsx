@@ -47,7 +47,15 @@ function App() {
       ...notes.slice(index + 1),
     ];
     setNotes(newNotes);
-    localStorage.setItem(KEY_NOTES, JSON.stringify(newNotes));
+    localStorage.setItem(
+      KEY_NOTES,
+      JSON.stringify(
+        newNotes.map(({ id, text }) => ({
+          id,
+          text,
+        }))
+      )
+    );
   };
 
   // ウォッチャー
