@@ -6,7 +6,7 @@ N は、極端にシンプルなメモ帳です。
 
 https://AsaiToshiya.github.io/n
 
-![N Notepad](https://user-images.githubusercontent.com/67789502/179772612-004d4c81-78b5-4fbe-8cfd-5b68407d0386.PNG)
+![N Notepad](screenshot.png)
 
 入力したメモは、ブラウザーの localStorage に自動的に保存され、100 件を超えると、古いメモから順に削除されます。
 

@@ -6,7 +6,7 @@ N is an extremely simple notepad.
 
 https://AsaiToshiya.github.io/n
 
-![N Notepad](https://user-images.githubusercontent.com/67789502/179772612-004d4c81-78b5-4fbe-8cfd-5b68407d0386.PNG)
+![N Notepad](screenshot.png)
 
 Typed note is automatically saved in the browser's localStorage, and the oldest note will be deleted when the number exceeds 100.
 
