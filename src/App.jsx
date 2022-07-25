@@ -151,7 +151,7 @@ function App() {
 
       {/* メモ リスト */}
       {isListShow && (
-        <div className="list" style={{ overflow: "auto" }}>
+        <div className="list" style={{ minWidth: 300, overflow: "auto" }}>
           <Menu
             className="d-flex flex-column"
             items={notes.map((note) => ({
