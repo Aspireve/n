@@ -10,8 +10,6 @@ function App() {
   const KEY_NOTES = "notes";
   const MAX_NOTE_COUNT = 100;
 
-  // リアクティブ変数
-
   const [isListShow, setListShow] = useState(false);
   const [notes, setNotes] = useState(
     (JSON.parse(localStorage.getItem(KEY_NOTES)) || []).map(({ id, text }) => ({
@@ -22,8 +20,6 @@ function App() {
   );
   const [selected, setSelected] = useState([]);
   const textarea = useRef(null);
-
-  // 算出プロパティ
 
   const text = useMemo(() => {
     const id = selected[0];
@@ -58,11 +54,7 @@ function App() {
     );
   };
 
-  // ウォッチャー
-
   useEffect(() => textarea.current.focus(), [isListShow, selected]);
-
-  // メソッド ハンドラー
 
   const addNote = () => {
     const id = Math.random().toString(36).slice(2);
@@ -72,8 +64,6 @@ function App() {
   };
 
   const toggleList = () => setListShow(!isListShow);
-
-  // ライフサイクル フック
 
   useEffect(() => addNote(), []);
 
