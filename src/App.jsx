@@ -143,13 +143,18 @@ function App() {
 
       {/* メモ リスト */}
       {isListShow && (
-        <Menu
-          className="d-flex flex-column list"
-          items={notes.map((note) => ({ label: note.noteName, key: note.id }))}
-          mode="inline"
-          onSelect={({ key }) => setSelected([key])}
-          selectedKeys={selected}
-        />
+        <div className="list" style={{ overflow: "auto" }}>
+          <Menu
+            className="d-flex flex-column"
+            items={notes.map((note) => ({
+              label: note.noteName,
+              key: note.id,
+            }))}
+            mode="inline"
+            onSelect={({ key }) => setSelected([key])}
+            selectedKeys={selected}
+          />
+        </div>
       )}
 
       {/* テキスト エリア */}
