@@ -14,7 +14,11 @@ function App() {
 
   const [isListShow, setListShow] = useState(false);
   const [notes, setNotes] = useState(
-    JSON.parse(localStorage.getItem(KEY_NOTES)) || []
+    (JSON.parse(localStorage.getItem(KEY_NOTES)) || []).map(({ id, text }) => ({
+      id,
+      text,
+      noteName: text.trim() ? text : "Empty",
+    }))
   );
   const [selected, setSelected] = useState([]);
   const textarea = useRef(null);
