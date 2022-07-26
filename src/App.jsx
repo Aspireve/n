@@ -10,6 +10,8 @@ function App() {
   const KEY_NOTES = "notes";
   const MAX_NOTE_COUNT = 100;
 
+  // ステート フックと ref フック
+
   const [isListShow, setListShow] = useState(false);
   const [notes, setNotes] = useState(
     (JSON.parse(localStorage.getItem(KEY_NOTES)) || []).map(({ id, text }) => ({
@@ -21,6 +23,8 @@ function App() {
   const [selectedKeys, setSelectedKeys] = useState([]);
   const textarea = useRef(null);
 
+  // メソッド
+
   const addNote = () => {
     const id = Math.random().toString(36).slice(2);
     const newNote = { id, text: "", noteName: "Empty" };
@@ -29,6 +33,8 @@ function App() {
   };
 
   const toggleList = () => setListShow(!isListShow);
+
+  // メモ フック
 
   const text = useMemo(() => {
     const id = selectedKeys[0];
@@ -39,9 +45,13 @@ function App() {
     return note.text;
   }, [notes, selectedKeys]);
 
+  // 副作用フック
+
   useEffect(() => addNote(), []);
 
   useEffect(() => textarea.current.focus(), [isListShow, selectedKeys]);
+
+  // イベント ハンドラー
 
   const handleChange = (event) => {
     const id = selectedKeys[0];
