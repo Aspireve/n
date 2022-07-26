@@ -18,19 +18,19 @@ function App() {
       noteName: text.trim() ? text : "Empty",
     }))
   );
-  const [selected, setSelected] = useState([]);
+  const [selectedKeys, setSelectedKeys] = useState([]);
   const textarea = useRef(null);
 
   const text = useMemo(() => {
-    const id = selected[0];
+    const id = selectedKeys[0];
     if (!id) {
       return "";
     }
     const note = notes.find((x) => x.id === id);
     return note.text;
-  }, [notes, selected]);
+  }, [notes, selectedKeys]);
   const handleChange = (event) => {
-    const id = selected[0];
+    const id = selectedKeys[0];
     const index = notes.findIndex((x) => x.id === id);
     const newNote = {
       id,
@@ -54,13 +54,13 @@ function App() {
     );
   };
 
-  useEffect(() => textarea.current.focus(), [isListShow, selected]);
+  useEffect(() => textarea.current.focus(), [isListShow, selectedKeys]);
 
   const addNote = () => {
     const id = Math.random().toString(36).slice(2);
     const newNote = { id, text: "", noteName: "Empty" };
     setNotes([newNote, ...notes].slice(0, MAX_NOTE_COUNT));
-    setSelected([id]);
+    setSelectedKeys([id]);
   };
 
   const toggleList = () => setListShow(!isListShow);
@@ -149,8 +149,8 @@ function App() {
               key: note.id,
             }))}
             mode="inline"
-            onSelect={({ key }) => setSelected([key])}
-            selectedKeys={selected}
+            onSelect={({ key }) => setSelectedKeys([key])}
+            selectedKeys={selectedKeys}
           />
         </div>
       )}
