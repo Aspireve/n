@@ -51,7 +51,7 @@ const GithubIcon = () => (
 );
 
 function App() {
-  // ステート フックと ref フック
+  // ステート フック
 
   const [isListShow, setListShow] = useState(false);
   const [notes, setNotes] = useState(
