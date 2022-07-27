@@ -4,6 +4,11 @@ import { Menu } from "antd";
 import Icon from "@ant-design/icons";
 import "./App.css";
 
+// 定数
+
+const KEY_NOTES = "notes";
+const MAX_NOTE_COUNT = 100;
+
 // アイコン
 
 const NoteMultipleOutlineIcon = () => (
@@ -46,11 +51,6 @@ const GithubIcon = () => (
 );
 
 function App() {
-  // 定数
-
-  const KEY_NOTES = "notes";
-  const MAX_NOTE_COUNT = 100;
-
   // ステート フックと ref フック
 
   const [isListShow, setListShow] = useState(false);
