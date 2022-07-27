@@ -78,6 +78,17 @@ function App() {
     );
   };
 
+  const handleClick = ({ key }) => {
+    switch (key) {
+      case "list":
+        toggleList();
+        break;
+      case "new":
+        addNote();
+        break;
+    }
+  };
+
   return (
     <div className="d-flex h-100">
       {/* ナビゲーション メニュー */}
@@ -133,16 +144,7 @@ function App() {
           },
         ]}
         mode="inline"
-        onClick={({ key }) => {
-          switch (key) {
-            case "list":
-              toggleList();
-              break;
-            case "new":
-              addNote();
-              break;
-          }
-        }}
+        onClick={handleClick}
         selectable={false}
         style={{
           minWidth: 56,
