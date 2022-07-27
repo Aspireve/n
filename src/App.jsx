@@ -50,6 +50,26 @@ const GithubIcon = () => (
   />
 );
 
+// 変数
+
+const menuItems = [
+  {
+    key: "list",
+    icon: <NoteMultipleOutlineIcon />,
+  },
+  {
+    key: "new",
+    icon: <CreationIcon />,
+  },
+  {
+    icon: (
+      <a href="https://github.com/AsaiToshiya/n" target="_blank">
+        <GithubIcon />
+      </a>
+    ),
+  },
+];
+
 function App() {
   // ステート フック
 
@@ -146,23 +166,7 @@ function App() {
       <Menu
         className="d-flex flex-column h-100"
         inlineCollapsed={true}
-        items={[
-          {
-            key: "list",
-            icon: <NoteMultipleOutlineIcon />,
-          },
-          {
-            key: "new",
-            icon: <CreationIcon />,
-          },
-          {
-            icon: (
-              <a href="https://github.com/AsaiToshiya/n" target="_blank">
-                <GithubIcon />
-              </a>
-            ),
-          },
-        ]}
+        items={menuItems}
         mode="inline"
         onClick={handleClick}
         selectable={false}
