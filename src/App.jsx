@@ -70,6 +70,8 @@ function App() {
     key: note.id,
   }));
 
+  // ref フック
+
   const textarea = useRef(null);
 
   // メソッド
