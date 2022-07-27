@@ -180,7 +180,6 @@ function App() {
       {isListShow && (
         <div className="list" style={{ minWidth: 300, overflow: "auto" }}>
           <Menu
-            className="d-flex flex-column"
             items={listItems}
             mode="inline"
             onSelect={({ key }) => setSelectedKeys([key])}
