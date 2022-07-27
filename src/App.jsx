@@ -62,6 +62,14 @@ function App() {
     }))
   );
   const [selectedKeys, setSelectedKeys] = useState([]);
+
+  // 変数
+
+  const listItems = notes.map((note) => ({
+    label: note.noteName,
+    key: note.id,
+  }));
+
   const textarea = useRef(null);
 
   // メソッド
@@ -167,10 +175,7 @@ function App() {
         <div className="list" style={{ minWidth: 300, overflow: "auto" }}>
           <Menu
             className="d-flex flex-column"
-            items={notes.map((note) => ({
-              label: note.noteName,
-              key: note.id,
-            }))}
+            items={listItems}
             mode="inline"
             onSelect={({ key }) => setSelectedKeys([key])}
             selectedKeys={selectedKeys}
