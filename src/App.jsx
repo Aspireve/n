@@ -87,13 +87,16 @@ function App() {
           {
             key: "list",
             icon: <MenuOutlined />,
+            title: 'Menu',
           },
           {
             key: "new",
             icon: <PlusOutlined />,
+            title: 'New',
           },
           {
             icon: <GithubOutlined />,
+            title: 'Github',
           },
         ]}
         mode="inline"
