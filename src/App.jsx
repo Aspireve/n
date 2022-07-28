@@ -162,7 +162,7 @@ function App() {
 
   return (
     <div className="d-flex h-100">
-      {/* ナビゲーション メニュー */}
+      {/* メニュー */}
       <Menu
         className="d-flex flex-column h-100"
         inlineCollapsed={true}
