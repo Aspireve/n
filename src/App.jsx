@@ -161,24 +161,20 @@ function App() {
   };
 
   return (
-    <div className="d-flex h-100">
+    <div className="App">
       {/* メニュー */}
       <Menu
-        className="d-flex flex-column h-100"
+        className="App-menu"
         inlineCollapsed={true}
         items={menuItems}
         mode="inline"
         onClick={handleClick}
         selectable={false}
-        style={{
-          minWidth: 56,
-          width: 56,
-        }}
       />
 
       {/* メモ リスト */}
       {isListShow && (
-        <div className="list" style={{ minWidth: 300, overflow: "auto" }}>
+        <div className="list">
           <Menu
             items={listItems}
             mode="inline"
@@ -190,10 +186,9 @@ function App() {
 
       {/* テキスト エリア */}
       <textarea
-        className="px-2 text w-100"
+        className="text"
         onChange={handleChange}
         ref={textarea}
-        style={{ border: "initial" }}
         value={text}
       />
     </div>
