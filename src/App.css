@@ -1,37 +1,33 @@
+.App {
+  display: flex !important;
+  height: 100% !important;
+}
+
+.App-menu {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  min-width: 56px;
+  width: 56px !important;
+}
+
 .list {
   max-width: 300px;
+  min-width: 300px;
+  overflow: auto;
   width: 300px;
 }
 
 .text {
+  border: initial;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
   resize: none;
+  width: 100% !important;
 }
 
 .text:focus {
   outline: none;
-}
-
-/* Vuetify で定義されているスタイル */
-
-.d-flex {
-  display: flex !important;
-}
-
-.flex-column {
-  flex-direction: column !important;
-}
-
-.h-100 {
-  height: 100% !important;
-}
-
-.px-2 {
-  padding-right: 8px !important;
-  padding-left: 8px !important;
-}
-
-.w-100 {
-  width: 100% !important;
 }
 
 /* Ant Design のコンポーネントに適用するスタイル */

@@ -4,13 +4,32 @@ import { Menu } from "antd";
 import { PlusOutlined, MenuOutlined, GithubOutlined } from "@ant-design/icons";
 import "./App.css";
 
+// 定数
+
+const KEY_NOTES = "notes";
+const MAX_NOTE_COUNT = 100;
+
+// 変数
+
+const menuItems = [
+  {
+    key: "list",
+    icon: <MenuOutlined />,
+    title: "Menu",
+  },
+  {
+    key: "new",
+    icon: <PlusOutlined />,
+    title: "New",
+  },
+  {
+    icon: <GithubOutlined />,
+    title: "Github",
+  },
+];
+
 function App() {
-  // 定数
-
-  const KEY_NOTES = "notes";
-  const MAX_NOTE_COUNT = 100;
-
-  // リアクティブ変数
+  // ステート フック
 
   const [isListShow, setListShow] = useState(false);
   const [notes, setNotes] = useState(
@@ -20,21 +39,51 @@ function App() {
       noteName: text.trim() ? text : "Empty",
     }))
   );
-  const [selected, setSelected] = useState([]);
+  const [selectedKeys, setSelectedKeys] = useState([]);
+
+  // 変数
+
+  const listItems = notes.map((note) => ({
+    label: note.noteName,
+    key: note.id,
+  }));
+
+  // ref フック
+
   const textarea = useRef(null);
 
-  // 算出プロパティ
+  // メソッド
+
+  const addNote = () => {
+    const id = Math.random().toString(36).slice(2);
+    const newNote = { id, text: "", noteName: "Empty" };
+    setNotes([newNote, ...notes].slice(0, MAX_NOTE_COUNT));
+    setSelectedKeys([id]);
+  };
+
+  const toggleList = () => setListShow(!isListShow);
+
+  // メモ フック
 
   const text = useMemo(() => {
-    const id = selected[0];
+    const id = selectedKeys[0];
     if (!id) {
       return "";
     }
     const note = notes.find((x) => x.id === id);
     return note.text;
-  }, [notes, selected]);
+  }, [notes, selectedKeys]);
+
+  // 副作用フック
+
+  useEffect(() => addNote(), []);
+
+  useEffect(() => textarea.current.focus(), [isListShow, selectedKeys]);
+
+  // イベント ハンドラー
+
   const handleChange = (event) => {
-    const id = selected[0];
+    const id = selectedKeys[0];
     const index = notes.findIndex((x) => x.id === id);
     const newNote = {
       id,
@@ -58,87 +107,46 @@ function App() {
     );
   };
 
-  // ウォッチャー
-
-  useEffect(() => textarea.current.focus(), [isListShow, selected]);
-
-  // メソッド ハンドラー
-
-  const addNote = () => {
-    const id = Math.random().toString(36).slice(2);
-    const newNote = { id, text: "", noteName: "Empty" };
-    setNotes([newNote, ...notes].slice(0, MAX_NOTE_COUNT));
-    setSelected([id]);
+  const handleClick = ({ key }) => {
+    switch (key) {
+      case "list":
+        toggleList();
+        break;
+      case "new":
+        addNote();
+        break;
+    }
   };
 
-  const toggleList = () => setListShow(!isListShow);
-
-  // ライフサイクル フック
-
-  useEffect(() => addNote(), []);
-
   return (
-    <div className="d-flex h-100">
-      {/* ナビゲーション メニュー */}
+    <div className="App">
+      {/* メニュー */}
       <Menu
-        className="d-flex flex-column h-100"
+        className="App-menu"
         inlineCollapsed={true}
-        items={[
-          {
-            key: "list",
-            icon: <MenuOutlined />,
-            title: 'Menu',
-          },
-          {
-            key: "new",
-            icon: <PlusOutlined />,
-            title: 'New',
-          },
-          {
-            icon: <GithubOutlined />,
-            title: 'Github',
-          },
-        ]}
+        items={menuItems}
         mode="inline"
-        onClick={({ key }) => {
-          switch (key) {
-            case "list":
-              toggleList();
-              break;
-            case "new":
-              addNote();
-              break;
-          }
-        }}
+        onClick={handleClick}
         selectable={false}
-        style={{
-          minWidth: 56,
-          width: 56,
-        }}
       />
 
       {/* メモ リスト */}
       {isListShow && (
-        <div className="list" style={{ minWidth: 300, overflow: "auto" }}>
+        <div className="list">
           <Menu
-            className="d-flex flex-column"
-            items={notes.map((note) => ({
-              label: note.noteName,
-              key: note.id,
-            }))}
+            items={listItems}
             mode="inline"
-            onSelect={({ key }) => setSelected([key])}
-            selectedKeys={selected}
+            onSelect={({ key }) => setSelectedKeys([key])}
+            selectedKeys={selectedKeys}
           />
         </div>
       )}
 
       {/* テキスト エリア */}
       <textarea
-        className="px-2 text w-100"
+        className="text"
         onChange={handleChange}
         ref={textarea}
-        style={{ border: "initial" }}
         value={text}
       />
     </div>
