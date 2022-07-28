@@ -132,7 +132,7 @@ function App() {
 
       {/* メモ リスト */}
       {isListShow && (
-        <div className="list">
+        <div className="App-list">
           <Menu
             items={listItems}
             mode="inline"
@@ -144,7 +144,7 @@ function App() {
 
       {/* テキスト エリア */}
       <textarea
-        className="text"
+        className="App-text"
         onChange={handleChange}
         ref={textarea}
         value={text}

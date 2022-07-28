@@ -11,14 +11,14 @@
   width: 56px !important;
 }
 
-.list {
+.App-list {
   max-width: 300px;
   min-width: 300px;
   overflow: auto;
   width: 300px;
 }
 
-.text {
+.App-text {
   border: initial;
   padding-left: 8px !important;
   padding-right: 8px !important;
@@ -26,7 +26,7 @@
   width: 100% !important;
 }
 
-.text:focus {
+.App-text:focus {
   outline: none;
 }
 
