@@ -18,6 +18,10 @@
   width: 300px;
 }
 
+.App-list-menu {
+  height: 100%;
+}
+
 .App-text {
   border: initial;
   padding-left: 8px !important;

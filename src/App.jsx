@@ -139,6 +139,7 @@ function App() {
       {isListShow && (
         <div className="App-list">
           <Menu
+            className="App-list-menu"
             items={listItems}
             mode="inline"
             onSelect={({ key }) => setSelectedKeys([key])}
