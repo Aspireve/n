@@ -1,8 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import "antd/dist/antd.css";
-import { Menu } from "antd";
+import { Menu, Input } from "antd";
 import { PlusOutlined, MenuOutlined, GithubOutlined } from "@ant-design/icons";
 import "./App.css";
+
+const { TextArea } = Input;
 
 // 定数
 
@@ -149,7 +151,8 @@ function App() {
       )}
 
       {/* テキスト エリア */}
-      <textarea
+      <TextArea
+        bordered={false}
         className="App-text"
         onChange={handleChange}
         ref={textarea}
