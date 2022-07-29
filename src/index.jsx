@@ -9,7 +9,7 @@ document.documentElement.style.colorScheme = isDark ? "dark" : "light";
 const head = document.getElementsByTagName("head")[0];
 const link = document.createElement("link");
 link.rel = "stylesheet";
-link.href = isDark ? "/antd.dark.min.css" : "/antd.min.css";
+link.href = isDark ? "/n/antd.dark.min.css" : "/n/antd.min.css";
 head.appendChild(link);
 
 const root = ReactDOM.createRoot(document.getElementById('app'));
