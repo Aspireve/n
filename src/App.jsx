@@ -23,6 +23,7 @@ const menuItems = [
     title: "New",
   },
   {
+    key: "github",
     icon: <GithubOutlined />,
     title: "Github",
   },
@@ -115,6 +116,8 @@ function App() {
       case "new":
         notes[0].text.trim() === "" ? textarea.current.focus() : addNote();
         // checks if previous note is empty, if empty it focus on text-area, if false then it addsNote
+      case "github":
+        window.open("https://github.com/AsaiToshiya/n")
       break;
     }
   };
