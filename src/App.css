@@ -36,6 +36,6 @@
 
 /* Ant Design のコンポーネントに適用するスタイル */
 
-.ant-menu:first-of-type > .ant-menu-item:last-of-type {
+.App-menu > .ant-menu-item:last-of-type {
   margin-top: auto !important;
 }
