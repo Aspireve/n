@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import "antd/dist/antd.css";
-import { Menu } from "antd";
+import { Menu, Input } from "antd";
 import { PlusOutlined, MenuOutlined, GithubOutlined } from "@ant-design/icons";
 import "./App.css";
+
+const { TextArea } = Input;
 
 // 定数
 
@@ -23,6 +24,7 @@ const menuItems = [
     title: "New",
   },
   {
+    key: "github",
     icon: <GithubOutlined />,
     title: "Github",
   },
@@ -115,6 +117,9 @@ function App() {
       case "new":
         notes[0].text.trim() === "" ? textarea.current.focus() : addNote();
         // checks if previous note is empty, if empty it focus on text-area, if false then it addsNote
+        break;
+      case "github":
+        window.open("https://github.com/AsaiToshiya/n")
       break;
     }
   };
@@ -133,8 +138,9 @@ function App() {
 
       {/* メモ リスト */}
       {isListShow && (
-        <div className="list">
+        <div className="App-list">
           <Menu
+            className="App-list-menu"
             items={listItems}
             mode="inline"
             onSelect={({ key }) => setSelectedKeys([key])}
@@ -144,8 +150,9 @@ function App() {
       )}
 
       {/* テキスト エリア */}
-      <textarea
-        className="text"
+      <TextArea
+        bordered={false}
+        className="App-text"
         onChange={handleChange}
         ref={textarea}
         value={text}

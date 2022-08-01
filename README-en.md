@@ -11,6 +11,13 @@ https://AsaiToshiya.github.io/n
 Typed note is automatically saved in the browser's localStorage, and the oldest note will be deleted when the number exceeds 100.
 
 
+## Options
+
+### Dark Mode
+
+https://asaitoshiya.github.io/n/?theme=dark
+
+
 ## Technology stack
 
 React + Ant Design + Vite

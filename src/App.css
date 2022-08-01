@@ -11,14 +11,18 @@
   width: 56px !important;
 }
 
-.list {
+.App-list {
   max-width: 300px;
   min-width: 300px;
   overflow: auto;
   width: 300px;
 }
 
-.text {
+.App-list-menu {
+  height: 100%;
+}
+
+.App-text {
   border: initial;
   padding-left: 8px !important;
   padding-right: 8px !important;
@@ -26,12 +30,12 @@
   width: 100% !important;
 }
 
-.text:focus {
+.App-text:focus {
   outline: none;
 }
 
 /* Ant Design のコンポーネントに適用するスタイル */
 
-.ant-menu:first-of-type > .ant-menu-item:last-of-type {
+.App-menu > .ant-menu-item:last-of-type {
   margin-top: auto !important;
 }
