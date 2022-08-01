@@ -12,9 +12,11 @@ link.rel = "stylesheet";
 link.href = isDark ? "/n/antd.dark.min.css" : "/n/antd.min.css";
 head.appendChild(link);
 
-const root = ReactDOM.createRoot(document.getElementById('app'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+link.onload = () => {
+  const root = ReactDOM.createRoot(document.getElementById('app'));
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+};
