@@ -23,11 +23,9 @@
 }
 
 .App-text {
-  border: initial;
   padding-left: 8px !important;
   padding-right: 8px !important;
   resize: none;
-  width: 100% !important;
 }
 
 .App-text:focus {
