@@ -60,7 +60,7 @@ function App() {
     const id = Math.random().toString(36).slice(2);
     const newNote = { id, text: "", noteName: "Empty" };
     setNotes([newNote, ...notes].slice(0, MAX_NOTE_COUNT));
-    setSelectedKeys([id]);
+    return newNote;
   };
 
   const toggleList = () => setListShow(!isListShow);
@@ -78,7 +78,7 @@ function App() {
 
   // 副作用フック
 
-  useEffect(() => addNote(), []);
+  useEffect(() => setSelectedKeys([addNote().id]), []);
 
   useEffect(() => textarea.current.focus(), [isListShow, selectedKeys]);
 
@@ -117,7 +117,7 @@ function App() {
       case "new":
         notes[0].text.trim() === ""
           ? setSelectedKeys([notes[0].id])
-          : addNote();
+          : setSelectedKeys([addNote().id]);
         // checks if previous note is empty, if empty it focus on text-area, if false then it addsNote
         break;
       case "github":
