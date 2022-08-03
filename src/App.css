@@ -19,7 +19,7 @@
 }
 
 .App-list-menu {
-  height: 100%;
+  min-height: 100%;
 }
 
 .App-text {
