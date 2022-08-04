@@ -59,7 +59,7 @@ function App() {
     return newNote;
   };
 
-  const toggleList = () => setListShow(!isListShow);
+  const handleListClick = () => setListShow(!isListShow);
 
   // メモ フック
 
@@ -96,7 +96,7 @@ function App() {
   const handleClick = ({ key }) => {
     switch (key) {
       case "list":
-        toggleList();
+        handleListClick();
         break;
       case "new":
         notes[0].text.trim() === ""
