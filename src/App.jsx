@@ -16,7 +16,7 @@ const menuItems = [
   {
     key: "list",
     icon: <MenuOutlined />,
-    title: "Menu",
+    title: "List",
   },
   {
     key: "new",
@@ -26,7 +26,7 @@ const menuItems = [
   {
     key: "github",
     icon: <GithubOutlined />,
-    title: "Github",
+    title: "GitHub",
   },
 ];
 
