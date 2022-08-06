@@ -61,6 +61,12 @@ function App() {
 
   const handleListClick = () => setListShow(!isListShow);
 
+  const handleNewClick = () => {
+    notes[0].text.trim() === ""
+      ? setSelectedKeys([notes[0].id])
+      : setSelectedKeys([addNote().id]);
+  };
+
   // メモ フック
 
   const text = useMemo(() => {
@@ -99,10 +105,7 @@ function App() {
         handleListClick();
         break;
       case "new":
-        notes[0].text.trim() === ""
-          ? setSelectedKeys([notes[0].id])
-          : setSelectedKeys([addNote().id]);
-        // checks if previous note is empty, if empty it focus on text-area, if false then it addsNote
+        handleNewClick();
         break;
       case "github":
         window.open("https://github.com/AsaiToshiya/n")
