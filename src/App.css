@@ -19,15 +19,13 @@
 }
 
 .App-list-menu {
-  height: 100%;
+  min-height: 100%;
 }
 
 .App-text {
-  border: initial;
   padding-left: 8px !important;
   padding-right: 8px !important;
   resize: none;
-  width: 100% !important;
 }
 
 .App-text:focus {
@@ -38,4 +36,9 @@
 
 .App-menu > .ant-menu-item:last-of-type {
   margin-top: auto !important;
+}
+
+.App-list-menu > .ant-menu-item {
+  height: 24px !important;
+  line-height: 24px !important;
 }

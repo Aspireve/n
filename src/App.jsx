@@ -16,7 +16,7 @@ const menuItems = [
   {
     key: "list",
     icon: <MenuOutlined />,
-    title: "Menu",
+    title: "List",
   },
   {
     key: "new",
@@ -26,7 +26,7 @@ const menuItems = [
   {
     key: "github",
     icon: <GithubOutlined />,
-    title: "Github",
+    title: "GitHub",
   },
 ];
 
@@ -35,18 +35,14 @@ function App() {
 
   const [isListShow, setListShow] = useState(false);
   const [notes, setNotes] = useState(
-    (JSON.parse(localStorage.getItem(KEY_NOTES)) || []).map(({ id, text }) => ({
-      id,
-      text,
-      noteName: text.trim() ? text : "Empty",
-    }))
+    JSON.parse(localStorage.getItem(KEY_NOTES)) || []
   );
   const [selectedKeys, setSelectedKeys] = useState([]);
 
   // 変数
 
   const listItems = notes.map((note) => ({
-    label: note.noteName,
+    label: note.text.() ? note.text : "Empty",
     key: note.id,
   }));
 
@@ -58,12 +54,28 @@ function App() {
 
   const addNote = () => {
     const id = Math.random().toString(36).slice(2);
-    const newNote = { id, text: "", noteName: "Empty" };
+    const newNote = { id, text: "" };
     setNotes([newNote, ...notes].slice(0, MAX_NOTE_COUNT));
-    setSelectedKeys([id]);
+    return newNote;
   };
 
-  const toggleList = () => setListShow(!isListShow);
+  const handleGithubClick = () => window.open("https://github.com/AsaiToshiya/n");
+
+  const handleListClick = () => setListShow(!isListShow);
+
+  const handleNewClick = () => {
+    notes[0].text() === ""
+      ? setSelectedKeys([notes[0].id])
+      : setSelectedKeys([addNote().id]);
+  };
+
+  // 変数
+
+  const clickHandlers = {
+    github: handleGithubClick,
+    list: handleListClick,
+    new: handleNewClick,
+  };
 
   // メモ フック
 
@@ -78,7 +90,7 @@ function App() {
 
   // 副作用フック
 
-  useEffect(() => addNote(), []);
+  useEffect(() => setSelectedKeys([addNote().id]), []);
 
   useEffect(() => textarea.current.focus(), [isListShow, selectedKeys]);
 
@@ -87,27 +99,16 @@ function App() {
   const handleChange = (event) => {
     const id = selectedKeys[0];
     const index = notes.findIndex((x) => x.id === id);
-    const newNote = {
-      id,
-      text: event.target.value,
-      noteName: event.target.value.trim() ? event.target.value : "Empty",
-    };
+    const newNote = { id, text: event.target.value };
     const newNotes = [
       newNote,
       ...notes.slice(0, index),
       ...notes.slice(index + 1),
     ];
     setNotes(newNotes);
-    localStorage.setItem(
-      KEY_NOTES,
-      JSON.stringify(
-        newNotes.map(({ id, text }) => ({
-          id,
-          text,
-        }))
-      )
-    );
+    localStorage.setItem(KEY_NOTES, JSON.stringify(newNotes));
   };
+
 
   const handleClick = ({ key }) => {
     switch (key) {
@@ -116,13 +117,15 @@ function App() {
         break;
       case "new":
         notes[0].text === "" ? textarea.current.focus() : addNote();
-        // checks if previous note is empty, if empty it focus on text-area, if false then it addsNote
         break;
       case "github":
         window.open("https://github.com/AsaiToshiya/n")
       break;
     }
   };
+
+  const handleClick = ({ key }) => clickHandlers[key]();
+
 
   return (
     <div className="App">
