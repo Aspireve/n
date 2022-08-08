@@ -59,6 +59,8 @@ function App() {
     return newNote;
   };
 
+  const handleGithubClick = () => window.open("https://github.com/AsaiToshiya/n");
+
   const handleListClick = () => setListShow(!isListShow);
 
   const handleNewClick = () => {
@@ -108,7 +110,7 @@ function App() {
         handleNewClick();
         break;
       case "github":
-        window.open("https://github.com/AsaiToshiya/n")
+        handleGithubClick()
       break;
     }
   };
