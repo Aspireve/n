@@ -69,6 +69,14 @@ function App() {
       : setSelectedKeys([addNote().id]);
   };
 
+  // 変数
+
+  const clickHandlers = {
+    github: handleGithubClick,
+    list: handleListClick,
+    new: handleNewClick,
+  };
+
   // メモ フック
 
   const text = useMemo(() => {
@@ -101,19 +109,7 @@ function App() {
     localStorage.setItem(KEY_NOTES, JSON.stringify(newNotes));
   };
 
-  const handleClick = ({ key }) => {
-    switch (key) {
-      case "list":
-        handleListClick();
-        break;
-      case "new":
-        handleNewClick();
-        break;
-      case "github":
-        handleGithubClick()
-      break;
-    }
-  };
+  const handleClick = ({ key }) => clickHandlers[key]();
 
   return (
     <div className="App">
